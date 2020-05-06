@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Lab03_SystemIO
 {
@@ -6,10 +7,16 @@ namespace Lab03_SystemIO
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine(ViewList());
         }
 
-        
+        public static string ViewList()
+        {
+            string path = "ourList.txt";
+            string[] ourListFromStorage = File.ReadAllLines(path);
+            return string.Join("\n", ourListFromStorage);
+
+        }
 
         public static string[] RemoveItemFromList(string[] input, string specifiedListItem)
         {
@@ -32,8 +39,9 @@ namespace Lab03_SystemIO
             {
                 Console.WriteLine("That item doesn't exist!");
                 return input;
-                throw;
             }
         }
+
+        
     }
 }

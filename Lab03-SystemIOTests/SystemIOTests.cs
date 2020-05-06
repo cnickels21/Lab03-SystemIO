@@ -32,6 +32,7 @@ namespace Lab03_SystemIOTests
 
             // Act
             string[] result = File.ReadAllLines(path);
+            //string[] result = Program.ViewList();
 
             //
             Assert.Equal(expectedContents, result);
