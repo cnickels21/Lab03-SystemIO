@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.IO;
 using Xunit;
 
@@ -10,9 +11,8 @@ namespace Lab03_SystemIOTests
         public void Can_write_to_file()
         {
             // Arrange
-            // From parameters
             string path = "tests.txt";
-            string[] contents = new[] { "Hello" };
+            string[] contents = new[] { "Hello." };
 
             // Act
             File.WriteAllLines(path, contents);
@@ -20,5 +20,22 @@ namespace Lab03_SystemIOTests
             // Assert
             Assert.Equal(contents, File.ReadAllLines(path));
         }
+
+        [Fact]
+        public void Can_read_from_file()
+        {
+            // Arrange
+            string path = "tests.txt";
+            string[] expectedContents = new[] { "Hello." };
+
+            // Act
+            string[] result = File.ReadAllLines(path);
+
+            //
+            Assert.Equal(expectedContents, result);
+        }
+
+
+
     }
 }
