@@ -14,4 +14,14 @@
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Lab03-SystemIO\Lab03-SystemIO.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="tests.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
