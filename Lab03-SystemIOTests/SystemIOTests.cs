@@ -53,5 +53,19 @@ namespace Lab03_SystemIOTests
             Assert.Equal(expectedContents, actualContents);
         }
 
+        [Theory]
+        [InlineData(new[] { "Hello", "Goodbye" }, new[] { "Hello" })]
+        public void Can_delete_item_from_list(string[] input, string[] expected)
+        {
+            // Arrange
+            // From parameters
+
+            // Act
+            string[] result = Program.RemoveItemFromList(input, input[1]);
+
+            // Assert
+            Assert.Equal(expected, result);
+        }
+
     }
 }
