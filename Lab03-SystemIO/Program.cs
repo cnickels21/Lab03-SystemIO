@@ -8,5 +8,10 @@ namespace Lab03_SystemIO
         {
             Console.WriteLine("Hello World!");
         }
+
+        public static void TestMethod(string path)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,3 +1,4 @@
+using Lab03_SystemIO;
 using System;
 using System.ComponentModel;
 using System.IO;
@@ -15,6 +16,7 @@ namespace Lab03_SystemIOTests
             string[] contents = new[] { "Hello." };
 
             // Act
+            // Program.TestMethod(path);
             File.WriteAllLines(path, contents);
 
             // Assert
@@ -35,7 +37,21 @@ namespace Lab03_SystemIOTests
             Assert.Equal(expectedContents, result);
         }
 
+        [Fact]
+        public void Can_append_item_to_list()
+        {
+            // Arrange
+            string path = "tests.txt";
+            string[] contentsToAppend = new[] { "Hello again!" };
 
+            // Act
+            File.AppendAllLines(path, contentsToAppend);
+
+            // Assert
+            string[] expectedContents = new[] { "Hello.", "Hello again!" };
+            string[] actualContents = File.ReadAllLines(path);
+            Assert.Equal(expectedContents, actualContents);
+        }
 
     }
 }
