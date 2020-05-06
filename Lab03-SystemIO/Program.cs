@@ -9,23 +9,31 @@ namespace Lab03_SystemIO
             Console.WriteLine("Hello World!");
         }
 
-        public static void TestMethod(string path)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public static string[] RemoveItemFromList(string[] input, string specifiedListItem)
         {
-            string[] arrayWithItemRemoved = new string[input.Length - 1];
-
-            for (int i = 0; i < input.Length; i++)
+            try
             {
-                if (input[i] != specifiedListItem)
+                string[] arrayWithItemRemoved = new string[input.Length - 1];
+                int indexCounterForNewArray = 0;
+
+                for (int i = 0; i < input.Length; i++)
                 {
-                    arrayWithItemRemoved[i] = input[i];
+                    if (input[i] != specifiedListItem)
+                    {
+                        arrayWithItemRemoved[indexCounterForNewArray] = input[i];
+                        indexCounterForNewArray++;
+                    }
                 }
+                return arrayWithItemRemoved;
             }
-            return arrayWithItemRemoved;
+            catch (IndexOutOfRangeException iex)
+            {
+                Console.WriteLine("That item doesn't exist!");
+                return input;
+                throw;
+            }
         }
     }
 }

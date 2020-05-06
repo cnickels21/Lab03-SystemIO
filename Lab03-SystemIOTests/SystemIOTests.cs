@@ -54,14 +54,18 @@ namespace Lab03_SystemIOTests
         }
 
         [Theory]
-        [InlineData(new[] { "Hello", "Goodbye" }, new[] { "Hello" })]
-        public void Can_delete_item_from_list(string[] input, string[] expected)
+        [InlineData(new[] { "Hello", "Goodbye" }, "Goodbye", new[] { "Hello" })]
+        [InlineData(new[] { "Chase", "Francesco", "Keith" }, "Keith", new[] { "Chase", "Francesco" })]
+        [InlineData(new[] { "Chase", "Francesco", "Keith" }, "Francesco", new[] { "Chase", "Keith" })]
+        [InlineData(new[] { "Chase", "Francesco", "Keith" }, "Chase", new[] { "Francesco", "Keith" })]
+        [InlineData(new[] { "Hello", "Goodbye" }, "Hey you", new[] { "Hello", "Goodbye" })]
+        public void Can_delete_item_from_list(string[] input, string itemToDelete, string[] expected)
         {
             // Arrange
-            // From parameters
+            //string specifiedItem = "";
 
             // Act
-            string[] result = Program.RemoveItemFromList(input, input[1]);
+            string[] result = Program.RemoveItemFromList(input, itemToDelete);
 
             // Assert
             Assert.Equal(expected, result);
