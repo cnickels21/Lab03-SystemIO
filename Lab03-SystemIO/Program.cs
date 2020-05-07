@@ -18,7 +18,7 @@ namespace Lab03_SystemIO
 
         public static void UserInteractionHandler(string[] ourList)
         {
-            Console.WriteLine("\nTo view our list enter 1.\nTo add to our list enter 2.\nTo remove from our list enter 3.\nTo exit app enter 4.\n");
+            Console.WriteLine("\nTo view our list enter 1.\nTo add to our list enter 2.\nTo remove from our list enter 3.\nTo exit app enter 4.");
             int userAction = int.Parse(Console.ReadLine());
             string path = "ourList.txt";
 
@@ -31,7 +31,10 @@ namespace Lab03_SystemIO
                 }
                 if (userAction == 2)
                 {
-                    // Insert method here
+                    Console.WriteLine("\nEnter the name of the show you would like to add!");
+                    string favoriteShow = Console.ReadLine();
+                    string[] appendedList = AddItemToList(path, favoriteShow);
+                    UserInteractionHandler(appendedList);
                 }
                 if (userAction == 3)
                 {
