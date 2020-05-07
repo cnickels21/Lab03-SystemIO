@@ -43,10 +43,10 @@ namespace Lab03_SystemIOTests
         {
             // Arrange
             string path = "tests.txt";
-            string[] contentsToAppend = new[] { "Hello again!" };
+            string contentsToAppend = "Hello again!";
 
             // Act
-            File.AppendAllLines(path, contentsToAppend);
+            Program.AddItemToList(path, contentsToAppend);
 
             // Assert
             string[] expectedContents = new[] { "Hello.", "Hello again!" };
@@ -63,9 +63,10 @@ namespace Lab03_SystemIOTests
         public void Can_delete_item_from_list(string[] input, string itemToDelete, string[] expected)
         {
             // Arrange
-            //string specifiedItem = "";
+            // Above
 
             // Act
+
             string[] result = Program.RemoveItemFromList(input, itemToDelete);
 
             // Assert
