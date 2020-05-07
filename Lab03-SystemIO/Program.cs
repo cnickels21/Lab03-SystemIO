@@ -13,7 +13,7 @@ namespace Lab03_SystemIO
             string[] ourListForUpdating = File.ReadAllLines(path);
 
             UserInteractionHandler(ourListForUpdating);
-  
+
         }
 
         public static void UserInteractionHandler(string[] ourList)
@@ -26,7 +26,7 @@ namespace Lab03_SystemIO
             {
                 if (userAction == 1)
                 {
-                    Console.WriteLine(ViewList(path));
+                    Console.WriteLine(string.Join("\n", ViewList(path)));
                     UserInteractionHandler(ourList);
                 }
                 if (userAction == 2)
@@ -38,11 +38,8 @@ namespace Lab03_SystemIO
                 }
                 if (userAction == 3)
                 {
-                    Console.WriteLine(ViewList(path));
-                    Console.WriteLine("\nEnter the name of the show you would like to remove.");
-                    string specifiedListItem = Console.ReadLine();
-                    string[] updatedList = RemoveItemFromList(ourList, specifiedListItem);
-                    RemoveItemFromTextFile(path, updatedList);
+                    string[] updatedList = RemoveItemFromTextFile(path);
+                    Console.WriteLine(string.Join("\n", updatedList));
                     UserInteractionHandler(updatedList);
                 }
                 if (userAction == 4)
@@ -57,10 +54,10 @@ namespace Lab03_SystemIO
             }
         }
 
-        public static string ViewList(string path)
+        public static string[] ViewList(string path)
         {
             string[] ourListFromStorage = File.ReadAllLines(path);
-            return string.Join("\n", ourListFromStorage);
+            return ourListFromStorage;
         }
 
         // Method to add item to list
@@ -68,16 +65,21 @@ namespace Lab03_SystemIO
         public static string[] AddItemToList(string path, string input)
         {
             
-            File.AppendAllText(path, input);
-            string[] appendedList = File.ReadAllLines(path);
+            File.AppendAllText(path, input + Environment.NewLine);
+            string[] appendedList = ViewList(path);
             return appendedList;
         }
 
         // Method to rewrite text file after the array is updated
 
-        public static void RemoveItemFromTextFile(string path, string[] input)
+        public static string[] RemoveItemFromTextFile(string path)
         {
-            File.WriteAllLines(path, input);
+            Console.WriteLine("\nEnter the name of the show you would like to remove.");
+            string specifiedListItem = Console.ReadLine();
+            string[] currentList = ViewList(path);
+            string[] updatedList = RemoveItemFromList(currentList, specifiedListItem);
+            File.WriteAllLines(path, updatedList);
+            return updatedList;
         }
 
         // Method to remove item from list
