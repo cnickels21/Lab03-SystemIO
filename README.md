@@ -17,3 +17,4 @@ Our approach to designing this app was through TDD, test driven development.  We
 ![Startup](images/lab03startup.png)
 ![Remove](images/lab03remove.png)
 ![Add](images/lab03add.png)
+![Error](images/lab03error.png)

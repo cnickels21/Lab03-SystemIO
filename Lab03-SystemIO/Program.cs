@@ -102,11 +102,17 @@ namespace Lab03_SystemIO
             }
             catch (IndexOutOfRangeException iex)
             {
-                Console.WriteLine("That item doesn't exist!");
+                Console.WriteLine("That item doesn't exist!", iex.Message);
+                ExceptionHandling(iex.ToString());
                 return input;
             }
         }
 
-        
+        //Method 
+        public static void ExceptionHandling(string errorMessage) 
+        {
+            string path = "logError.txt";
+            File.AppendAllText(path, errorMessage + Environment.NewLine);
+        }
     }
 }
